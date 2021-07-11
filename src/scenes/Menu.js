@@ -4,6 +4,10 @@ class Menu extends Phaser.Scene {
         super("menuScene");
     }
 
+    preload() {
+        this.load.image('autobahn', './assets/autobahn_menu.png');
+    }
+
 
     create() {
         // menu text configuration
@@ -21,8 +25,8 @@ class Menu extends Phaser.Scene {
         }
 
         // show menu text
-        this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, ' Autobahn (working title)', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width / 2, game.config.height / 2, 'Press S to start', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 1.5, game.config.height / 1.5 - borderUISize - borderPadding, ' Autobahn (working title)', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 1.5, game.config.height / 1.5, 'Press S to start', menuConfig).setOrigin(0.5);
         //menuConfig.backgroundColor = '#00FF00';
         //menuConfig.color = '#000';
     }
