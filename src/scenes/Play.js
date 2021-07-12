@@ -5,22 +5,23 @@ class Play extends Phaser.Scene {
 
     preload() {
         // load images
-        this.load.image('background', './assets/Placeholder_BG2.png');
+        this.load.image('grass', './assets/green_bg.png');
+        this.load.image('road', './assets/road_bg.png');
     }
 
     create() {
         //place tile sprite
-        //this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'background').setOrigin(0, 0);
-        this.background = this.physics.add.sprite(0, 0, 'background').setScale(1, 1).setOrigin(0);
+        this.grass = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'grass').setOrigin(0, 0);
+        this.road = this.physics.add.sprite(0, 0, 'road').setScale(1, 1).setOrigin(0);
 
         //this.background.setAllowGravity(true);
     }
 
     update() {
-        this.background.setVelocityY(30);
-        this.background.setVelocityX(-10);
-        if (this.background.y > 100) {
-            this.background.body.reset();
+        this.road.setVelocityY(30);
+        this.road.setVelocityX(-10);
+        if (this.road.y > 50) {
+            this.road.body.reset();
 
         }
         //this.background.tilePositionY -= 1.5;
