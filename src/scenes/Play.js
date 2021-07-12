@@ -16,7 +16,8 @@ class Play extends Phaser.Scene {
     }
 
     update() {
-        this.background.setDragY(-6);
+        this.background.setVelocityY(10);
+        this.background.setVelocityX(-10);
         //this.background.setDragX(-6);
 
     }
