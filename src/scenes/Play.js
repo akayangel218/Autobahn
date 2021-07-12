@@ -5,16 +5,17 @@ class Play extends Phaser.Scene {
 
     preload() {
         // load images
-        this.load.image('background', './assets/Placeholder_BG.png');
+        this.load.image('background', './assets/Placeholder_BG2.png');
     }
 
     create() {
         //place tile sprite
-        this.track = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'background').setOrigin(0, 0);
+        this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'background').setOrigin(0, 0);
     }
 
     update() {
-
+        //this.background.tilePositionY -= 6;
+        //this.background.tilePositionx -= 2;
     }
 
     // helper functions go here
