@@ -10,14 +10,16 @@ class Play extends Phaser.Scene {
 
     create() {
         //place tile sprite
-        //this.background = this.add.sprite(0, 0, game.config.width, game.config.height, 'background').setOrigin(0, 0);
-        this.background = this.physics.add.sprite(0, 0, 'background').setOrigin(0);
+        this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'background').setOrigin(0, 0);
+        //this.background = this.physics.add.sprite(0, 0, 'background').setOrigin(0);
         //this.background.setAllowGravity(true);
     }
 
     update() {
-        this.background.setVelocityY(10);
-        this.background.setVelocityX(-10);
+        //this.background.setVelocityY(10);
+        //this.background.setVelocityX(-10);
+        this.background.tilePositionY -= 1.5;
+        this.background.tilePositionX += 3;
         //this.background.setDragX(-6);
 
     }
