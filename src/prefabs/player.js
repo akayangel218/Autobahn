@@ -6,17 +6,22 @@ class Player extends Phaser.GameObjects.Sprite {
         scene.physics.add.existing(this);
         this.moveSpeed = 2;
         this.setDepth(1);
+        this.body.setAllowGravity(true);
+        this.body.enable = true;
+        this.body.immovable = false;
     }
 
     update() {
         // left/right movement
         if (keyLEFT.isDown) {
             this.x -= this.moveSpeed;
-            this.y += this.moveSpeed;
+            //this.y += this.moveSpeed;
+
         } else if (keyRIGHT.isDown) {
             this.x += this.moveSpeed;
-            this.y -= this.moveSpeed;
+            //this.y -= this.moveSpeed;
         }
+
     }
 
     reset() {

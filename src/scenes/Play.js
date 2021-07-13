@@ -11,10 +11,14 @@ class Play extends Phaser.Scene {
     }
 
     create() {
+        //this.physics.world.gravity.y = 450;
+
         //place tile sprite
         this.grass = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'grass').setOrigin(0, 0);
         this.road = this.physics.add.sprite(40, -200, 'road').setOrigin(0);
-        this.car = new Player(this, 50, 400, 'car').setOrigin(0, 0);
+        this.road.setAllowGravity = false;
+        this.car = new Player(this, 200, 100, 'car').setOrigin(0, 0);
+        //this.car.setAngle(-30);
         //this.road.body.enable = false;
         //this.road.scaleY = 2;
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -24,10 +28,12 @@ class Play extends Phaser.Scene {
 
     update() {
         //this.road.setAngle(90);
+        this.road.setAllowGravity = false;
         this.road.scaleY = 1.5;
         this.road.scaleX = 0.7;
         this.road.setVelocityY(100);
         this.road.setVelocityX(-15);
+
         //this.road.setScale(1, 2);
         if (this.road.y > -100) {
             //this.road.body.reset(0, -200);
