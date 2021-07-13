@@ -11,7 +11,14 @@ class Play extends Phaser.Scene {
     }
 
     create() {
-        //this.physics.world.gravity.y = 450;
+
+        // score UI background
+        this.add.rectangle(0, 0, game.config.width, borderUISize * 2, 0x0000FF).setOrigin(0, 0);
+
+        // GAME OVER flag
+        this.gameOver = false;
+        // initialize score
+        this.p1Score = 0;
 
         //place tile sprite
         this.grass = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'grass').setOrigin(0, 0);
@@ -24,6 +31,21 @@ class Play extends Phaser.Scene {
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         //this.background.setAllowGravity(true);
+
+        // display score
+        let scoreConfig = {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+            backgroundColor: '#F3B141',
+            color: '#843605',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 100
+        }
+        this.scoreLeft = this.add.text(20, 15, this.p1Score, scoreConfig);
     }
 
     update() {
@@ -59,12 +81,13 @@ class Play extends Phaser.Scene {
             this.car.body.setVelocityX(0);
         }
         // random obstacle right lane
-        if (1 == Phaser.Math.RND.integerInRange(1, 300)) {
+        if (1 == Phaser.Math.RND.integerInRange(1, 700)) {
             let obs = this.physics.add.sprite(250, 10, 'car').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
             //this.obs.setVelocityY(-100);
             //this.obs.body.setDepth(1);
             //obsArr.push(obs);
-
+            this.p1Score += 10;
+            this.scoreLeft.text = this.p1Score;
 
 
         }
