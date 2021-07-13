@@ -8,7 +8,7 @@ class Player extends Phaser.GameObjects.Sprite {
         this.setDepth(1);
         this.body.setAllowGravity(true);
         this.body.enable = true;
-        this.body.immovable = false;
+        this.body.immovable = true;
         this.body.setSize(30, 40, 20, 60);
     }
 
