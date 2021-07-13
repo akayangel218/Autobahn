@@ -27,7 +27,8 @@ class Play extends Phaser.Scene {
     }
 
     update() {
-        //this.road.setAngle(90);
+
+        this.road.setDepth(0);
         this.road.setAllowGravity = false;
         this.road.scaleY = 1.5;
         this.road.scaleX = 0.7;
@@ -41,8 +42,7 @@ class Play extends Phaser.Scene {
 
 
         }
-        this.grass.tilePositionY -= 1.5;
-        //this.background.tilePositionX += 1;
+        this.grass.tilePositionY -= 4;
 
 
         // car left/right movement
@@ -57,6 +57,16 @@ class Play extends Phaser.Scene {
             //this.y -= this.moveSpeed;
         } else {
             this.car.body.setVelocityX(0);
+        }
+        // random obstacle right lane
+        if (1 == Phaser.Math.RND.integerInRange(1, 300)) {
+            let obs = this.physics.add.sprite(250, 10, 'car').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
+            //this.obs.setVelocityY(-100);
+            //this.obs.body.setDepth(1);
+            //obsArr.push(obs);
+
+
+
         }
 
     }

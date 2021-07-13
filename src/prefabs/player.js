@@ -9,18 +9,19 @@ class Player extends Phaser.GameObjects.Sprite {
         this.body.setAllowGravity(true);
         this.body.enable = true;
         this.body.immovable = false;
+        this.body.setSize(30, 40, 20, 60);
     }
 
     update() {
         // left/right movement
         if (keyLEFT.isDown) {
             //this.x -= this.moveSpeed;
-            this.car.body.setVelocityX(30);
+            //this.car.body.setVelocityX(30);
             //this.y += this.moveSpeed;
 
         } else if (keyRIGHT.isDown) {
             //this.x += this.moveSpeed;
-            this.car.body.setVelocityX(-30);
+            //this.car.body.setVelocityX(-30);
             //this.y -= this.moveSpeed;
         }
 
