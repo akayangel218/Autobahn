@@ -14,11 +14,13 @@ class Player extends Phaser.GameObjects.Sprite {
     update() {
         // left/right movement
         if (keyLEFT.isDown) {
-            this.x -= this.moveSpeed;
+            //this.x -= this.moveSpeed;
+            this.car.body.setVelocityX(30);
             //this.y += this.moveSpeed;
 
         } else if (keyRIGHT.isDown) {
-            this.x += this.moveSpeed;
+            //this.x += this.moveSpeed;
+            this.car.body.setVelocityX(-30);
             //this.y -= this.moveSpeed;
         }
 

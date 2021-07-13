@@ -17,7 +17,7 @@ class Play extends Phaser.Scene {
         this.grass = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'grass').setOrigin(0, 0);
         this.road = this.physics.add.sprite(40, -200, 'road').setOrigin(0);
         this.road.setAllowGravity = false;
-        this.car = new Player(this, 200, 100, 'car').setOrigin(0, 0);
+        this.car = new Player(this, 200, 300, 'car').setOrigin(0, 0);
         //this.car.setAngle(-30);
         //this.road.body.enable = false;
         //this.road.scaleY = 2;
@@ -44,6 +44,20 @@ class Play extends Phaser.Scene {
         this.grass.tilePositionY -= 1.5;
         //this.background.tilePositionX += 1;
 
+
+        // car left/right movement
+        if (keyLEFT.isDown) {
+            //this.x -= this.moveSpeed;
+            this.car.body.setVelocityX(-70);
+            //this.y += this.moveSpeed;
+
+        } else if (keyRIGHT.isDown) {
+            //this.x += this.moveSpeed;
+            this.car.body.setVelocityX(70);
+            //this.y -= this.moveSpeed;
+        } else {
+            this.car.body.setVelocityX(0);
+        }
 
     }
 
