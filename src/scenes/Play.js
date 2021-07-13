@@ -32,6 +32,8 @@ class Play extends Phaser.Scene {
         //this.road.scaleY = 2;
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+        keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
         //this.background.setAllowGravity(true);
 
         // display score
@@ -86,12 +88,17 @@ class Play extends Phaser.Scene {
                 //this.x += this.moveSpeed;
                 this.car.body.setVelocityX(70);
                 //this.y -= this.moveSpeed;
+            } else if (keyUP.isDown) {
+                this.car.body.setVelocityY(-25);
+            } else if (keyDOWN.isDown) {
+                this.car.body.setVelocityY(40);
             } else {
                 this.car.body.setVelocityX(0);
+                this.car.body.setVelocityY(0);
             }
-            // random obstacle right lane
+            // random obstacle left lane
             if (1 == Phaser.Math.RND.integerInRange(1, 700)) {
-                let obs = this.physics.add.sprite(250, 10, 'car').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
+                let obs = this.physics.add.sprite(225, 10, 'car').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
                 //this.obs.setVelocityY(-100);
                 //this.obs.body.setDepth(1);
                 obsArr.push(obs);
@@ -101,6 +108,18 @@ class Play extends Phaser.Scene {
 
             }
 
+
+            // random obstacle right lane
+            if (1 == Phaser.Math.RND.integerInRange(1, 700)) {
+                let obs = this.physics.add.sprite(325, 10, 'car').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
+                //this.obs.setVelocityY(-100);
+                //this.obs.body.setDepth(1);
+                obsArr.push(obs);
+                this.p1Score += 10;
+                this.scoreLeft.text = this.p1Score;
+
+
+            }
             // check for collisions
 
             this.physics.add.collider(this.car, obsArr, (p, e) => {

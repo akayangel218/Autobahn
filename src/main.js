@@ -27,7 +27,7 @@ let config = {
 
 let game = new Phaser.Game(config);
 
-let keyLEFT, keyRIGHT, keyP, keyS;
+let keyLEFT, keyRIGHT, keyP, keyS, keyUP, keyDOWN;
 let obsArr = [];
 
 // set UI sizes (for now)
