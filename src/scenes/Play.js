@@ -12,16 +12,21 @@ class Play extends Phaser.Scene {
     create() {
         //place tile sprite
         this.grass = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'grass').setOrigin(0, 0);
-        this.road = this.physics.add.sprite(0, 0, 'road').setScale(1, 1).setOrigin(0);
+        this.road = this.physics.add.sprite(-10, -600, 'road').setOrigin(0);
+        //this.road.scaleY = 2;
 
         //this.background.setAllowGravity(true);
     }
 
     update() {
-        this.road.setVelocityY(30);
+        this.road.scaleY = 2.5;
+        this.road.setVelocityY(100);
         this.road.setVelocityX(-10);
-        if (this.road.y > 50) {
-            this.road.body.reset();
+        //this.road.setScale(1, 2);
+        if (this.road.y > -500) {
+            //this.road.body.reset(0, -200);
+            this.road = this.physics.add.sprite(110, -1400, 'road').setOrigin(0);
+
 
         }
         //this.background.tilePositionY -= 1.5;
