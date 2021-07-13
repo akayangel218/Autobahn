@@ -7,29 +7,35 @@ class Play extends Phaser.Scene {
         // load images
         this.load.image('grass', './assets/green_bg.png');
         this.load.image('road', './assets/road_bg.png');
+        this.load.image('car', './assets/Placeholder_PC.png');
     }
 
     create() {
         //place tile sprite
         this.grass = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'grass').setOrigin(0, 0);
-        this.road = this.physics.add.sprite(-10, -600, 'road').setOrigin(0);
+        this.road = this.physics.add.sprite(40, -200, 'road').setOrigin(0);
+        this.car = new Player(this, 50, 400, 'car').setOrigin(0, 0);
+        //this.road.body.enable = false;
         //this.road.scaleY = 2;
-
+        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+        keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         //this.background.setAllowGravity(true);
     }
 
     update() {
-        this.road.scaleY = 2.5;
+        //this.road.setAngle(90);
+        this.road.scaleY = 1.5;
+        this.road.scaleX = 0.7;
         this.road.setVelocityY(100);
-        this.road.setVelocityX(-10);
+        this.road.setVelocityX(-15);
         //this.road.setScale(1, 2);
-        if (this.road.y > -500) {
+        if (this.road.y > -100) {
             //this.road.body.reset(0, -200);
-            this.road = this.physics.add.sprite(110, -1400, 'road').setOrigin(0);
+            this.road = this.physics.add.sprite(150, -800, 'road').setOrigin(0);
 
 
         }
-        //this.background.tilePositionY -= 1.5;
+        this.grass.tilePositionY -= 1.5;
         //this.background.tilePositionX += 1;
 
 
