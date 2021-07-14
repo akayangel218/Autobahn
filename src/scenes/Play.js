@@ -10,6 +10,9 @@ class Play extends Phaser.Scene {
         this.load.image('car', './assets/Placeholder_PC.png');
         this.load.image('child', './assets/child.png');
         this.load.image('demon', './assets/demon.png');
+
+        // load audio
+        this.load.audio('motorway', './assets/Motorway_sound_effects.wav');
     }
 
     create() {
@@ -21,6 +24,10 @@ class Play extends Phaser.Scene {
         this.gameOver = false;
         // initialize score
         this.p1Score = 0;
+
+        // Add audio
+        this.sound.play('motorway');
+        this.sound.setVolume(0.1);
 
         //place tile sprite
         this.grass = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'grass').setOrigin(0, 0);
@@ -58,7 +65,7 @@ class Play extends Phaser.Scene {
 
         // game over
         if (this.gameOver) {
-            //music.stop();
+            this.sound.stopByKey('motorway');
             this.scene.start("menuScene");
         }
 
