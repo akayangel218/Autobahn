@@ -27,6 +27,8 @@ class Win extends Phaser.Scene {
             }
             // show menu text
         this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, 'You found the lost child!', menuConfig).setOrigin(0.5);
+        // define keys
+        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
 
     }
 
@@ -34,6 +36,6 @@ class Win extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(keyS)) {
             this.scene.start("menuScene");
         }
-        console.log('test');
+        //console.log('test');
     }
 }

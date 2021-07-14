@@ -101,7 +101,7 @@ class Play extends Phaser.Scene {
             }
 
             // random obstacle left lane
-            if (1 == Phaser.Math.RND.integerInRange(1, 700)) {
+            if (1 == Phaser.Math.RND.integerInRange(1, 900)) {
                 let obs = this.physics.add.sprite(225, 10, 'car').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
                 //this.obs.setVelocityY(-100);
                 //this.obs.body.setDepth(1);
@@ -114,7 +114,7 @@ class Play extends Phaser.Scene {
 
 
             // random obstacle right lane
-            if (1 == Phaser.Math.RND.integerInRange(1, 700)) {
+            if (1 == Phaser.Math.RND.integerInRange(1, 800)) {
                 let obs = this.physics.add.sprite(325, 10, 'car').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
                 //this.obs.setVelocityY(-100);
                 //this.obs.body.setDepth(1);
@@ -129,7 +129,7 @@ class Play extends Phaser.Scene {
             if (1 == Phaser.Math.RND.integerInRange(1, 5000)) {
                 let temp = this.physics.add.sprite(400, 10, 'child').setVelocityX(-15).setVelocityY(100).setOrigin(0);
                 chiArr.push(temp);
-            } else if (1 == Phaser.Math.RND.integerInRange(1, 700)) {
+            } else if (1 == Phaser.Math.RND.integerInRange(1, 900)) {
                 let temp = this.physics.add.sprite(400, 10, 'demon').setVelocityX(-15).setVelocityY(100).setOrigin(0);
                 demArr.push(temp);
             }
