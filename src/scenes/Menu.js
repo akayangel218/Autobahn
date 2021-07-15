@@ -27,9 +27,7 @@ class Menu extends Phaser.Scene {
 
         // show menu text
         this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, ' Autobahn (working title)', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width / 2, game.config.height / 1.5, 'Move the Car with <- and -> to move through traffic, pull over to find the child', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width / 2, game.config.height / 1, 'Be careful not to pick up any demons or hit any cars', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width / 2, game.config.height / 0.5, 'Press S to start', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 1.5, 'Press S to start', menuConfig).setOrigin(0.5);
         //menuConfig.backgroundColor = '#00FF00';
         //menuConfig.color = '#000';
 
