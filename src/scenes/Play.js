@@ -59,6 +59,8 @@ class Play extends Phaser.Scene {
             fixedWidth: 100
         }
         this.scoreLeft = this.add.text(20, 15, this.p1Score, scoreConfig);
+
+
     }
 
     update() {
@@ -108,7 +110,7 @@ class Play extends Phaser.Scene {
             }
 
             // random obstacle left lane
-            if (1 == Phaser.Math.RND.integerInRange(1, 900)) {
+            if (1 == Phaser.Math.RND.integerInRange(1, 700)) {
                 let obs = this.physics.add.sprite(225, 10, 'car').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
                 //this.obs.setVelocityY(-100);
                 //this.obs.body.setDepth(1);
@@ -121,7 +123,7 @@ class Play extends Phaser.Scene {
 
 
             // random obstacle right lane
-            if (1 == Phaser.Math.RND.integerInRange(1, 800)) {
+            if (1 == Phaser.Math.RND.integerInRange(1, 600)) {
                 let obs = this.physics.add.sprite(325, 10, 'car').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
                 //this.obs.setVelocityY(-100);
                 //this.obs.body.setDepth(1);
@@ -133,22 +135,24 @@ class Play extends Phaser.Scene {
             }
 
             // demon/child spawning
-            if (1 == Phaser.Math.RND.integerInRange(1, 5000)) {
+            if (1 == Phaser.Math.RND.integerInRange(1, 10000) && demArr.length >= 5) {
                 let temp = this.physics.add.sprite(400, 10, 'child').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
                 chiArr.push(temp);
-            } else if (1 == Phaser.Math.RND.integerInRange(1, 900)) {
+            } else if (1 == Phaser.Math.RND.integerInRange(1, 1000)) {
                 let temp = this.physics.add.sprite(400, 10, 'demon').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
                 demArr.push(temp);
+                //console.log(demArr.length);
             }
 
             // check for collisions with cars
             this.physics.add.collider(this.car, obsArr, (p, e) => {
-                console.log('collided ', e);
+                console.log('collided with car', e);
                 this.gameOver = true;
             });
 
             // check for collisions with demon 
             this.physics.add.collider(this.car, demArr, (p, e) => {
+                console.log('collided with demon', e);
                 this.gameOver = true;
             });
 
@@ -162,12 +166,14 @@ class Play extends Phaser.Scene {
             // clear arrays for memory conservation
             if (this.p1Score == 300) {
                 Phaser.Utils.Array.RemoveBetween(obsArr, 0, obsArr.length);
-                console.log(obsArr.length);
+                //console.log(obsArr.length);
                 //this.check += 1;
             } else if (this.p1Score == 600) {
                 Phaser.Utils.Array.RemoveBetween(obsArr, 0, obsArr.length);
             } else if (this.p1Score == 900) {
                 Phaser.Utils.Array.RemoveBetween(obsArr, 0, obsArr.length);
+            } else if (demArr.length > 50) {
+                Phaser.Utils.Array.RemoveBetween(demArr, 5, demArr.length);
             }
 
         }
