@@ -134,10 +134,10 @@ class Play extends Phaser.Scene {
 
             // demon/child spawning
             if (1 == Phaser.Math.RND.integerInRange(1, 5000)) {
-                let temp = this.physics.add.sprite(400, 10, 'child').setVelocityX(-15).setVelocityY(100).setOrigin(0);
+                let temp = this.physics.add.sprite(400, 10, 'child').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
                 chiArr.push(temp);
             } else if (1 == Phaser.Math.RND.integerInRange(1, 900)) {
-                let temp = this.physics.add.sprite(400, 10, 'demon').setVelocityX(-15).setVelocityY(100).setOrigin(0);
+                let temp = this.physics.add.sprite(400, 10, 'demon').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
                 demArr.push(temp);
             }
 

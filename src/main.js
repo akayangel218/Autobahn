@@ -14,8 +14,8 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true,
-            debugShowVelocity: true,
+            debug: false,
+            debugShowVelocity: false,
             gravity: {
                 x: 0,
                 y: 0
@@ -27,7 +27,7 @@ let config = {
 
 let game = new Phaser.Game(config);
 
-let keyLEFT, keyRIGHT, keyP, keyS, keyUP, keyDOWN;
+let keyLEFT, keyRIGHT, keyP, keyS, keyUP, keyDOWN, keyI;
 let obsArr = [];
 let demArr = [];
 let chiArr = [];
