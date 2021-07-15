@@ -1,5 +1,5 @@
 // Instruction window
-class Menu extends Phaser.Scene {
+class Instruct extends Phaser.Scene {
     constructor() {
         super("instructScene");
     }
