@@ -24,9 +24,12 @@ class Menu extends Phaser.Scene {
             },
             fixedWidth: 0
         }
+        // Add image
+        this.autobahn = this.physics.add.sprite(game.config.width / 2, game.config.height / 2.75 - borderUISize - borderPadding, 'autobahn').setOrigin(0.5);
+        this.autobahn.setScale(.2);
 
         // show menu text
-        this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, ' Autobahn (working title)', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 1.8 - borderUISize - borderPadding, ' Autobahn ', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 1.7, 'Press I to view the game instructions', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 1.5, 'Press S to start', menuConfig).setOrigin(0.5);
         //menuConfig.backgroundColor = '#00FF00';

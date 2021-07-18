@@ -36,7 +36,7 @@ class Play extends Phaser.Scene {
 
         // place player car
         this.car = new Player(this, 200, 300, 'car').setOrigin(0, 0);
-        //this.car.setAngle(-30);
+        this.car.setAngle(-32);
         //this.road.body.enable = false;
         //this.road.scaleY = 2;
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
