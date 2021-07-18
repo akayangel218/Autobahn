@@ -4,7 +4,7 @@ class Player extends Phaser.GameObjects.Sprite {
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
         scene.physics.add.existing(this);
-        this.moveSpeed = 4;
+        this.moveSpeed = 10;
         this.setDepth(1);
         this.body.setAllowGravity(true);
         this.body.enable = true;
