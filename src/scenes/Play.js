@@ -6,7 +6,7 @@ class Play extends Phaser.Scene {
     preload() {
         // load images
         this.load.image('grass', './assets/green_bg.png');
-        this.load.image('road', './assets/road_bg.png');
+        this.load.image('road', './assets/newBG.png');
         this.load.image('car', './assets/Placeholder_PC.png');
         this.load.image('child', './assets/child.png');
         this.load.image('demon', './assets/demon.png');
@@ -31,7 +31,7 @@ class Play extends Phaser.Scene {
 
         //place tile sprite
         this.grass = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'grass').setOrigin(0, 0);
-        this.road = this.physics.add.sprite(40, -200, 'road').setOrigin(0);
+        this.road = this.physics.add.sprite(0, -200, 'road').setOrigin(0);
         this.road.setAllowGravity = false;
 
         // place player car
@@ -58,6 +58,7 @@ class Play extends Phaser.Scene {
             fixedWidth: 100
         }
         this.scoreLeft = this.add.text(20, 15, this.p1Score, scoreConfig);
+        this.scoreLeft.setDepth(1);
 
 
     }
@@ -74,19 +75,19 @@ class Play extends Phaser.Scene {
         if (!this.gameOver) {
             this.road.setDepth(0);
             this.road.setAllowGravity = false;
-            this.road.scaleY = 1.5;
-            this.road.scaleX = 0.7;
+            this.road.scaleY = 2;
+            //this.road.scaleX = 0.7;
             this.road.setVelocityY(100);
-            this.road.setVelocityX(-15);
+            //this.road.setVelocityX(-15);
 
             //this.road.setScale(1, 2);
-            if (this.road.y > -100) {
+            if (this.road.y > 0) {
                 //this.road.body.reset(0, -200);
-                this.road = this.physics.add.sprite(150, -800, 'road').setOrigin(0);
+                this.road = this.physics.add.sprite(0, -950, 'road').setOrigin(0);
 
 
             }
-            this.grass.tilePositionY -= 4;
+            //this.grass.tilePositionY -= 4;
 
 
             // car left/right movement
@@ -110,7 +111,7 @@ class Play extends Phaser.Scene {
 
             // random obstacle left lane
             if (1 == Phaser.Math.RND.integerInRange(1, 700)) {
-                let obs = this.physics.add.sprite(225, -100, 'car').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
+                let obs = this.physics.add.sprite(225, -100, 'car').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(200).setOrigin(0);
                 //this.obs.setVelocityY(-100);
                 //this.obs.body.setDepth(1);
                 obsArr.push(obs);
@@ -123,7 +124,7 @@ class Play extends Phaser.Scene {
 
             // random obstacle right lane
             if (1 == Phaser.Math.RND.integerInRange(1, 900)) {
-                let obs = this.physics.add.sprite(325, -100, 'car').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
+                let obs = this.physics.add.sprite(325, -100, 'car').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(200).setOrigin(0);
                 //this.obs.setVelocityY(-100);
                 //this.obs.body.setDepth(1);
                 obsArr.push(obs);
@@ -135,23 +136,23 @@ class Play extends Phaser.Scene {
 
             // demon/child spawning
             if (1 == Phaser.Math.RND.integerInRange(1, 10000) && demArr.length >= 5) {
-                let temp = this.physics.add.sprite(400, 10, 'child').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
+                let temp = this.physics.add.sprite(400, 10, 'child').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 chiArr.push(temp);
-            } else if (1 == Phaser.Math.RND.integerInRange(1, 1000)) {
-                let temp = this.physics.add.sprite(400, 10, 'demon').setSize(30, 40, 20, 60).setVelocityX(-15).setVelocityY(100).setOrigin(0);
+            } else if (1 == Phaser.Math.RND.integerInRange(1, 5000)) {
+                let temp = this.physics.add.sprite(400, 10, 'demon').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 demArr.push(temp);
                 //console.log(demArr.length);
             }
 
             // check for collisions with cars
             this.physics.add.collider(this.car, obsArr, (p, e) => {
-                console.log('collided with car', e);
+                //console.log('collided with car', e);
                 this.gameOver = true;
             });
 
             // check for collisions with demon 
             this.physics.add.collider(this.car, demArr, (p, e) => {
-                console.log('collided with demon', e);
+                //console.log('collided with demon', e);
                 this.gameOver = true;
             });
 
