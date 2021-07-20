@@ -72,7 +72,7 @@ class Play extends Phaser.Scene {
         }
 
         // set out of bounds
-        if (this.car.x < 90 || this.car.x > 480) {
+        if (this.car.x < 110 || this.car.x > 480) {
             this.gameOver = true;
         }
 
