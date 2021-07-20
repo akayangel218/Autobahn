@@ -7,6 +7,8 @@ class Menu extends Phaser.Scene {
     preload() {
         this.load.image('autobahn', './assets/autobahn_menu.png');
 
+        // load audio
+        this.load.audio('msong', './assets/menu_screen_track.wav');
     }
 
 
@@ -28,6 +30,10 @@ class Menu extends Phaser.Scene {
         this.autobahn = this.physics.add.sprite(game.config.width / 2, game.config.height / 2.75 - borderUISize - borderPadding, 'autobahn').setOrigin(0.5);
         this.autobahn.setScale(.2);
 
+        // Add audio
+        this.sound.play('msong');
+        this.sound.setVolume(0.1);
+
         // show menu text
         this.add.text(game.config.width / 2, game.config.height / 1.8 - borderUISize - borderPadding, ' Autobahn ', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 1.7, 'Press I to view the game instructions', menuConfig).setOrigin(0.5);
@@ -42,6 +48,7 @@ class Menu extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyS)) {
+            this.sound.stopByKey('msong');
             this.scene.start("playScene");
         } else if (Phaser.Input.Keyboard.JustDown(keyI)) {
             this.scene.start("instructScene");
