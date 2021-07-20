@@ -35,7 +35,7 @@ class Play extends Phaser.Scene {
         this.road.setAllowGravity = false;
 
         // place player car
-        this.car = new Player(this, 200, 300, 'car').setOrigin(0, 0);
+        this.car = new Player(this, 200, 400, 'car').setOrigin(0, 0);
         //this.road.body.enable = false;
         //this.road.scaleY = 2;
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -58,7 +58,7 @@ class Play extends Phaser.Scene {
             fixedWidth: 100
         }
         this.scoreLeft = this.add.text(20, 15, this.p1Score, scoreConfig);
-        this.scoreLeft.setDepth(1);
+        this.scoreLeft.setDepth(2);
 
 
     }
@@ -136,12 +136,15 @@ class Play extends Phaser.Scene {
 
             // demon/child spawning
             if (1 == Phaser.Math.RND.integerInRange(1, 10000) && demArr.length >= 5) {
-                let temp = this.physics.add.sprite(400, 10, 'child').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
+                let temp = this.physics.add.sprite(480, -10, 'child').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 chiArr.push(temp);
-            } else if (1 == Phaser.Math.RND.integerInRange(1, 5000)) {
-                let temp = this.physics.add.sprite(400, 10, 'demon').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
+            } else if (2 == Phaser.Math.RND.integerInRange(1, 5000)) {
+                let temp = this.physics.add.sprite(480, 10, 'demon').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 demArr.push(temp);
                 //console.log(demArr.length);
+            } else if (3 == Phaser.Math.RND.integerInRange(1, 5000)) {
+                let temp = this.physics.add.sprite(100, 10, 'demon').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
+                demArr.push(temp);
             }
 
             // check for collisions with cars
