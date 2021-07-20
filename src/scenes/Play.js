@@ -71,6 +71,11 @@ class Play extends Phaser.Scene {
             this.scene.start("menuScene");
         }
 
+        // set out of bounds
+        if (this.car.x < 90 || this.car.x > 480) {
+            this.gameOver = true;
+        }
+
         // road regeneration
         if (!this.gameOver) {
             this.road.setDepth(0);
