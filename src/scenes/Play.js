@@ -7,7 +7,7 @@ class Play extends Phaser.Scene {
         // load images
         this.load.image('grass', './assets/green_bg.png');
         this.load.image('road', './assets/newBG.png');
-        this.load.image('car', './assets/Placeholder_PC.png');
+        this.load.image('car', './assets/playerCar.png');
         this.load.image('child', './assets/child.png');
         this.load.image('demon', './assets/demon.png');
 
@@ -93,17 +93,17 @@ class Play extends Phaser.Scene {
             // car left/right movement
             if (keyLEFT.isDown) {
                 //this.x -= this.moveSpeed;
-                this.car.body.setVelocityX(-100);
+                this.car.body.setVelocityX(-200);
                 //this.y += this.moveSpeed;
 
             } else if (keyRIGHT.isDown) {
                 //this.x += this.moveSpeed;
-                this.car.body.setVelocityX(100);
+                this.car.body.setVelocityX(200);
                 //this.y -= this.moveSpeed;
             } else if (keyUP.isDown) {
-                this.car.body.setVelocityY(-50);
+                //this.car.body.setVelocityY(-50);
             } else if (keyDOWN.isDown) {
-                this.car.body.setVelocityY(100);
+                //this.car.body.setVelocityY(100);
             } else {
                 this.car.body.setVelocityX(0);
                 this.car.body.setVelocityY(0);

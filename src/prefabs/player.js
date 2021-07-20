@@ -9,7 +9,7 @@ class Player extends Phaser.GameObjects.Sprite {
         this.body.setAllowGravity(true);
         this.body.enable = true;
         this.body.immovable = true;
-        this.body.setCircle(16, 30, -15);
+        //this.body.setCircle(16, 30, -15);
     }
 
     update() {
