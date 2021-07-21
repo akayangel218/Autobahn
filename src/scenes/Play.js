@@ -168,11 +168,11 @@ class Play extends Phaser.Scene {
             if (1 == Phaser.Math.RND.integerInRange(1, 5000) && this.childSpawn && chiArr.length == 0) {
                 let temp = this.physics.add.sprite(480, -10, 'child').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 chiArr.push(temp);
-            } else if (2 == Phaser.Math.RND.integerInRange(1, 2400)) {
+            } else if (2 == Phaser.Math.RND.integerInRange(1, 1500)) {
                 let temp = this.physics.add.sprite(480, -10, 'demon').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 demArr.push(temp);
                 //console.log(demArr.length);
-            } else if (3 == Phaser.Math.RND.integerInRange(1, 2400)) {
+            } else if (3 == Phaser.Math.RND.integerInRange(1, 1500)) {
                 let temp = this.physics.add.sprite(100, -10, 'demon').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 demArr.push(temp);
             }
