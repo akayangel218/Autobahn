@@ -17,7 +17,13 @@ class Play extends Phaser.Scene {
         this.load.audio('motorway', './assets/Motorway_sound_effects.wav');
     }
 
+
     create() {
+
+        // set up timer for child spawn
+        timer = this.time.delayedCall(10000, this.setChild(), this);
+        childSpawn = false;
+
 
         // score UI background
         this.add.rectangle(0, 0, game.config.width, borderUISize * 2, 0x0000FF).setOrigin(0, 0);
@@ -66,6 +72,10 @@ class Play extends Phaser.Scene {
     }
 
     update() {
+        //check timer 
+        if (timer.getElapsedSeconds() == 10) {
+            this.childSpawn = true;
+        }
 
         // game over
         if (this.gameOver) {
@@ -142,7 +152,7 @@ class Play extends Phaser.Scene {
                         }*/
 
             // demon/child spawning
-            if (1 == Phaser.Math.RND.integerInRange(1, 6000)) {
+            if (1 == Phaser.Math.RND.integerInRange(1, 5000) && this.childSpawn) {
                 let temp = this.physics.add.sprite(480, -10, 'child').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 chiArr.push(temp);
             } else if (2 == Phaser.Math.RND.integerInRange(1, 1000)) {
@@ -191,4 +201,7 @@ class Play extends Phaser.Scene {
     }
 
     // helper functions go here
+    setChild() {
+        this.childSpawn = true;
+    }
 }

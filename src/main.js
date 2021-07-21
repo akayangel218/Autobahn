@@ -33,6 +33,9 @@ let demArr = [];
 let chiArr = [];
 let obstacles = ["redCar", "yellowCar"];
 let check = 0;
+let childSpawn = false;
+//timer 
+let timer;
 
 
 // set UI sizes (for now)
