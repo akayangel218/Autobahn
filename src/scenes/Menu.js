@@ -15,24 +15,27 @@ class Menu extends Phaser.Scene {
     create() {
         // menu text configuration
         let menuConfig = {
-            fontFamily: 'Courier',
-            fontSize: '28px',
-            backgroundColor: 'blue',
-            color: 'white',
-            align: 'right',
-            padding: {
-                top: 5,
-                bottom: 5,
-            },
-            fixedWidth: 0
-        }
-        // Add image
+                fontFamily: 'Courier',
+                fontSize: '28px',
+                backgroundColor: 'blue',
+                color: 'white',
+                align: 'right',
+                padding: {
+                    top: 5,
+                    bottom: 5,
+                },
+                fixedWidth: 0
+            }
+            // Add image
         this.autobahn = this.physics.add.sprite(game.config.width / 2, game.config.height / 2.75 - borderUISize - borderPadding, 'autobahn').setOrigin(0.5);
         this.autobahn.setScale(.2);
 
         // Add audio
-        this.sound.play('msong');
-        this.sound.setVolume(0.1);
+        // set up in game music
+        menuMusic = this.sound.add('msong');
+        menuMusic.loop = true;
+        menuMusic.play();
+        menuMusic.setVolume(.2);
 
         // show menu text
         this.add.text(game.config.width / 2, game.config.height / 1.8 - borderUISize - borderPadding, ' Autobahn ', menuConfig).setOrigin(0.5);
@@ -48,7 +51,7 @@ class Menu extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyS)) {
-            this.sound.stopByKey('msong');
+            //this.sound.stopByKey('msong');
             this.scene.start("playScene");
         } else if (Phaser.Input.Keyboard.JustDown(keyI)) {
             this.scene.start("instructScene");

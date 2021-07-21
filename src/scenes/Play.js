@@ -20,6 +20,9 @@ class Play extends Phaser.Scene {
 
 
     create() {
+        // stop menu music
+        menuMusic.stop();
+
         // set up in game music
         music = this.sound.add('gametrack');
         music.loop = true;
