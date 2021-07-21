@@ -1,7 +1,7 @@
-// Base for lost
-class Lost extends Phaser.Scene {
+// Base for demon
+class Demon extends Phaser.Scene {
     constructor() {
-        super("lostScene");
+        super("demonScene");
     }
 
     preload() {
@@ -26,7 +26,7 @@ class Lost extends Phaser.Scene {
                 fixedWidth: 0
             }
             // show menu text
-        this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, 'OH NO! You the lost child!', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, 'OH NO! You picked up a demon!', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 1.5 - borderUISize - borderPadding, 'You survived:' + globalScore + ' cars', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 1.2 - borderUISize - borderPadding, 'Press S to return to Menu', menuConfig).setOrigin(0.5);
         // define keys

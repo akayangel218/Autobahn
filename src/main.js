@@ -22,12 +22,13 @@ let config = {
             }
         }
     },
-    scene: [Menu, Instruct, Play, Win, Lost]
+    scene: [Menu, Instruct, Play, Win, Lost, Crash, Demon, Out]
 }
 
 let game = new Phaser.Game(config);
 
 let keyLEFT, keyRIGHT, keyP, keyS, keyUP, keyDOWN, keyI;
+let globalScore = 0;
 let obsArr = [];
 let demArr = [];
 let chiArr = [];

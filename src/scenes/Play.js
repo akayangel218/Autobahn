@@ -19,6 +19,8 @@ class Play extends Phaser.Scene {
 
 
     create() {
+        // reset globalScore
+        globalScore = 0;
 
         // set up timer for child spawn
         timer = this.time.delayedCall(15000, this.setChild(), this);
@@ -98,7 +100,9 @@ class Play extends Phaser.Scene {
 
         // set out of bounds
         if (this.car.x < 110 || this.car.x > 480) {
-            this.gameOver = true;
+            globalScore = this.p1Score / 10;
+            this.scene.start("outScene");
+            //this.gameOver = true;
         }
 
         // road regeneration
@@ -185,23 +189,29 @@ class Play extends Phaser.Scene {
             // check if child has left screen
             if (spawnTimer.getElapsedSeconds() == 6) {
                 //this.gameOver = true;
+                globalScore = this.p1Score / 10;
                 this.scene.start("lostScene");
             }
 
             // check for collisions with cars
             this.physics.add.collider(this.car, obsArr, (p, e) => {
                 //console.log('collided with car', e);
-                this.gameOver = true;
+                globalScore = this.p1Score / 10;
+                this.scene.start("crashScene");
+                //this.gameOver = true;
             });
 
             // check for collisions with demon 
             this.physics.add.collider(this.car, demArr, (p, e) => {
                 //console.log('collided with demon', e);
-                this.gameOver = true;
+                globalScore = this.p1Score / 10;
+                this.scene.start("demonScene");
+                //this.gameOver = true;
             });
 
             // check collision for child
             this.physics.add.collider(this.car, chiArr, (p, e) => {
+                globalScore = this.p1Score / 10;
                 this.scene.start("winScene");
                 //this.gameOver = true;
             });
