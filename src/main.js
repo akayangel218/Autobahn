@@ -29,6 +29,7 @@ let game = new Phaser.Game(config);
 
 let keyLEFT, keyRIGHT, keyP, keyS, keyUP, keyDOWN, keyI;
 let globalScore = 0;
+let music;
 let obsArr = [];
 let demArr = [];
 let chiArr = [];

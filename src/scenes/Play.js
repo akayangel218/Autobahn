@@ -20,6 +20,13 @@ class Play extends Phaser.Scene {
 
 
     create() {
+        // set up music
+        music = this.sound.add('gametrack');
+        music.loop = true;
+        music.play();
+        music.setVolume(.1);
+
+
         // reset globalScore
         globalScore = 0;
 
@@ -39,7 +46,7 @@ class Play extends Phaser.Scene {
 
         // Add audio
         this.sound.play('motorway');
-        this.sound.setVolume(0.1);
+        this.sound.setVolume(0.5);
 
         //place tile sprite
         this.grass = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'grass').setOrigin(0, 0);
@@ -102,6 +109,7 @@ class Play extends Phaser.Scene {
         // set out of bounds
         if (this.car.x < 110 || this.car.x > 480) {
             globalScore = this.p1Score / 10;
+            music.stop();
             this.scene.start("outScene");
             //this.gameOver = true;
         }
@@ -191,6 +199,7 @@ class Play extends Phaser.Scene {
             if (spawnTimer.getElapsedSeconds() == 6) {
                 //this.gameOver = true;
                 globalScore = this.p1Score / 10;
+                music.stop();
                 this.scene.start("lostScene");
             }
 
@@ -198,6 +207,7 @@ class Play extends Phaser.Scene {
             this.physics.add.collider(this.car, obsArr, (p, e) => {
                 //console.log('collided with car', e);
                 globalScore = this.p1Score / 10;
+                music.stop();
                 this.scene.start("crashScene");
                 //this.gameOver = true;
             });
@@ -206,6 +216,7 @@ class Play extends Phaser.Scene {
             this.physics.add.collider(this.car, demArr, (p, e) => {
                 //console.log('collided with demon', e);
                 globalScore = this.p1Score / 10;
+                music.stop();
                 this.scene.start("demonScene");
                 //this.gameOver = true;
             });
@@ -213,6 +224,7 @@ class Play extends Phaser.Scene {
             // check collision for child
             this.physics.add.collider(this.car, chiArr, (p, e) => {
                 globalScore = this.p1Score / 10;
+                music.stop();
                 this.scene.start("winScene");
                 //this.gameOver = true;
             });
