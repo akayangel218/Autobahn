@@ -10,8 +10,8 @@ class Play extends Phaser.Scene {
         this.load.image('car', './assets/playerCar.png');
         this.load.image('yellowCar', './assets/carYellow.png');
         this.load.image('redCar', './assets/carRed.png');
-        this.load.image('child', './assets/girl1.png');
-        this.load.image('demon', './assets/girl2.png');
+        this.load.image('child', './assets/child.png');
+        this.load.image('demon', './assets/demon.png');
 
         // load audio
         this.load.audio('motorway', './assets/Motorway_sound_effects.wav');
@@ -21,9 +21,10 @@ class Play extends Phaser.Scene {
     create() {
 
         // set up timer for child spawn
-        timer = this.time.delayedCall(10000, this.setChild(), this);
-        childSpawn = false;
-
+        timer = this.time.delayedCall(15000, this.setChild(), this);
+        this.childSpawn = false;
+        // timer for when child spawns
+        spawnTimer = this.time.delayedCall(6000, this.setChild(), this);
 
         // score UI background
         this.add.rectangle(0, 0, game.config.width, borderUISize * 2, 0x0000FF).setOrigin(0, 0);
@@ -68,13 +69,25 @@ class Play extends Phaser.Scene {
         this.scoreLeft = this.add.text(20, 15, this.p1Score, scoreConfig);
         this.scoreLeft.setDepth(2);
 
+        // empty arrays before starting
+        Phaser.Utils.Array.RemoveBetween(chiArr, 0, chiArr.length);
+        Phaser.Utils.Array.RemoveBetween(obsArr, 0, obsArr.length);
+        Phaser.Utils.Array.RemoveBetween(demArr, 0, demArr.length);
 
     }
 
     update() {
+        // pause spawn timer until child spawned
+        if (chiArr.length == 0) {
+            spawnTimer.paused = true;
+        }
+        //console.log(timer.getElapsedSeconds());
+
         //check timer 
-        if (timer.getElapsedSeconds() == 10) {
+        if (timer.getElapsedSeconds() == 15) {
             this.childSpawn = true;
+        } else {
+            this.childSpawn = false;
         }
 
         // game over
@@ -152,16 +165,26 @@ class Play extends Phaser.Scene {
                         }*/
 
             // demon/child spawning
-            if (1 == Phaser.Math.RND.integerInRange(1, 5000) && this.childSpawn) {
+            if (1 == Phaser.Math.RND.integerInRange(1, 5000) && this.childSpawn && chiArr.length == 0) {
                 let temp = this.physics.add.sprite(480, -10, 'child').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 chiArr.push(temp);
-            } else if (2 == Phaser.Math.RND.integerInRange(1, 1000)) {
+            } else if (2 == Phaser.Math.RND.integerInRange(1, 2400)) {
                 let temp = this.physics.add.sprite(480, -10, 'demon').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 demArr.push(temp);
                 //console.log(demArr.length);
-            } else if (3 == Phaser.Math.RND.integerInRange(1, 1000)) {
+            } else if (3 == Phaser.Math.RND.integerInRange(1, 2400)) {
                 let temp = this.physics.add.sprite(100, -10, 'demon').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 demArr.push(temp);
+            }
+
+            // start timer once child has spawned
+            if (chiArr.length > 0) {
+                spawnTimer.paused = false;
+            }
+
+            // check if child has left screen
+            if (spawnTimer.getElapsedSeconds() == 6) {
+                this.gameOver = true;
             }
 
             // check for collisions with cars

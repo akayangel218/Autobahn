@@ -36,6 +36,7 @@ let check = 0;
 let childSpawn = false;
 //timer 
 let timer;
+let spawnTimer;
 
 
 // set UI sizes (for now)
