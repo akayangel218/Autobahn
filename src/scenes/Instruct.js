@@ -40,7 +40,7 @@ class Instruct extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyS)) {
-            this.sound.stopByKey('msong');
+            //this.sound.stopByKey('msong');
             this.scene.start("playScene");
         }
     }
