@@ -31,7 +31,9 @@ let keyLEFT, keyRIGHT, keyP, keyS, keyUP, keyDOWN, keyI;
 let obsArr = [];
 let demArr = [];
 let chiArr = [];
+let obstacles = ["redCar", "yellowCar"];
 let check = 0;
+
 
 // set UI sizes (for now)
 let borderUISize = game.config.height / 15;

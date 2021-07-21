@@ -8,8 +8,10 @@ class Play extends Phaser.Scene {
         this.load.image('grass', './assets/green_bg.png');
         this.load.image('road', './assets/newBG.png');
         this.load.image('car', './assets/playerCar.png');
-        this.load.image('child', './assets/child.png');
-        this.load.image('demon', './assets/demon.png');
+        this.load.image('yellowCar', './assets/carYellow.png');
+        this.load.image('redCar', './assets/carRed.png');
+        this.load.image('child', './assets/girl1.png');
+        this.load.image('demon', './assets/girl2.png');
 
         // load audio
         this.load.audio('motorway', './assets/Motorway_sound_effects.wav');
@@ -115,8 +117,8 @@ class Play extends Phaser.Scene {
             }
 
             // random obstacle left lane
-            if (1 == Phaser.Math.RND.integerInRange(1, 700)) {
-                let obs = this.physics.add.sprite(225, -100, 'car').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(200).setOrigin(0);
+            if (1 == Phaser.Math.RND.integerInRange(1, 150)) {
+                let obs = this.physics.add.sprite(Phaser.Math.RND.integerInRange(140, 420), -100, obstacles[Phaser.Math.RND.integerInRange(0, 1)]).setDepth(1).setSize(30, 40, 20, 60).setVelocityY(200).setOrigin(0);
                 //this.obs.setVelocityY(-100);
                 //this.obs.body.setDepth(1);
                 obsArr.push(obs);
@@ -126,29 +128,29 @@ class Play extends Phaser.Scene {
 
             }
 
+            /*
+                        // random obstacle right lane
+                        if (1 == Phaser.Math.RND.integerInRange(1, 500)) {
+                            let obs = this.physics.add.sprite(325, -100, obstacles[Phaser.Math.RND.integerInRange(0, 1)]).setDepth(1).setSize(30, 40, 20, 60).setVelocityY(200).setOrigin(0);
+                            //this.obs.setVelocityY(-100);
+                            //this.obs.body.setDepth(1);
+                            obsArr.push(obs);
+                            this.p1Score += 10;
+                            this.scoreLeft.text = this.p1Score;
 
-            // random obstacle right lane
-            if (1 == Phaser.Math.RND.integerInRange(1, 900)) {
-                let obs = this.physics.add.sprite(325, -100, 'car').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(200).setOrigin(0);
-                //this.obs.setVelocityY(-100);
-                //this.obs.body.setDepth(1);
-                obsArr.push(obs);
-                this.p1Score += 10;
-                this.scoreLeft.text = this.p1Score;
 
-
-            }
+                        }*/
 
             // demon/child spawning
-            if (1 == Phaser.Math.RND.integerInRange(1, 10000) && demArr.length >= 5) {
+            if (1 == Phaser.Math.RND.integerInRange(1, 10000)) {
                 let temp = this.physics.add.sprite(480, -10, 'child').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 chiArr.push(temp);
-            } else if (2 == Phaser.Math.RND.integerInRange(1, 5000)) {
-                let temp = this.physics.add.sprite(480, 10, 'demon').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
+            } else if (2 == Phaser.Math.RND.integerInRange(1, 1000)) {
+                let temp = this.physics.add.sprite(480, -10, 'demon').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 demArr.push(temp);
                 //console.log(demArr.length);
-            } else if (3 == Phaser.Math.RND.integerInRange(1, 5000)) {
-                let temp = this.physics.add.sprite(100, 10, 'demon').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
+            } else if (3 == Phaser.Math.RND.integerInRange(1, 1000)) {
+                let temp = this.physics.add.sprite(100, -10, 'demon').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 demArr.push(temp);
             }
 
