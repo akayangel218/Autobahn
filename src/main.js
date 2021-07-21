@@ -34,6 +34,8 @@ let obsArr = [];
 let demArr = [];
 let chiArr = [];
 let obstacles = ["redCar", "yellowCar"];
+let demons = ["dmon", "dmon2"];
+let children = ["girl1", "girl2"];
 let check = 0;
 let childSpawn = false;
 //timer 

@@ -10,8 +10,10 @@ class Play extends Phaser.Scene {
         this.load.image('car', './assets/playerCar.png');
         this.load.image('yellowCar', './assets/carYellow.png');
         this.load.image('redCar', './assets/carRed.png');
-        this.load.image('child', './assets/child.png');
-        this.load.image('demon', './assets/demon.png');
+        this.load.image('girl1', './assets/girl1.png');
+        this.load.image('girl2', './assets/girl2.png');
+        this.load.image('dmon', './assets/dmon.png');
+        this.load.image('dmon2', './assets/dmon2.png');
 
         // load audio
         this.load.audio('motorway', './assets/Motorway_sound_effects.wav');
@@ -158,7 +160,7 @@ class Play extends Phaser.Scene {
                 this.car.body.setVelocityY(0);
             }
 
-            // random obstacle left lane
+            // random car spawns
             if (1 == Phaser.Math.RND.integerInRange(1, 150)) {
                 let obs = this.physics.add.sprite(Phaser.Math.RND.integerInRange(140, 420), -100, obstacles[Phaser.Math.RND.integerInRange(0, 1)]).setDepth(1).setSize(30, 40, 20, 60).setVelocityY(200).setOrigin(0);
                 //this.obs.setVelocityY(-100);
@@ -185,14 +187,14 @@ class Play extends Phaser.Scene {
 
             // demon/child spawning
             if (1 == Phaser.Math.RND.integerInRange(1, 5000) && this.childSpawn && chiArr.length == 0) {
-                let temp = this.physics.add.sprite(480, -10, 'child').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
+                let temp = this.physics.add.sprite(480, -10, children[Phaser.Math.RND.integerInRange(0, 1)]).setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 chiArr.push(temp);
-            } else if (2 == Phaser.Math.RND.integerInRange(1, 1500)) {
-                let temp = this.physics.add.sprite(480, -10, 'demon').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
+            } else if (1 == Phaser.Math.RND.integerInRange(1, 1500)) {
+                let temp = this.physics.add.sprite(480, -10, demons[Phaser.Math.RND.integerInRange(0, 1)]).setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 demArr.push(temp);
                 //console.log(demArr.length);
-            } else if (3 == Phaser.Math.RND.integerInRange(1, 1500)) {
-                let temp = this.physics.add.sprite(100, -10, 'demon').setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
+            } else if (1 == Phaser.Math.RND.integerInRange(1, 1500)) {
+                let temp = this.physics.add.sprite(100, -10, demons[Phaser.Math.RND.integerInRange(0, 1)]).setDepth(1).setSize(30, 40, 20, 60).setVelocityY(100).setOrigin(0);
                 demArr.push(temp);
             }
 
