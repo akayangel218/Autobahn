@@ -185,7 +185,7 @@ class Play extends Phaser.Scene {
             // check if child has left screen
             if (spawnTimer.getElapsedSeconds() == 6) {
                 //this.gameOver = true;
-                this.scene.start("lostChildScene");
+                this.scene.start("lostScene");
             }
 
             // check for collisions with cars

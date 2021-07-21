@@ -1,7 +1,7 @@
-// Base for win(to be modified)
-class lostChild extends Phaser.Scene {
+// Base for lost
+class Lost extends Phaser.Scene {
     constructor() {
-        super("lostChildScene");
+        super("lostScene");
     }
 
     preload() {
