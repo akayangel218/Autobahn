@@ -15,6 +15,7 @@ class Play extends Phaser.Scene {
 
         // load audio
         this.load.audio('motorway', './assets/Motorway_sound_effects.wav');
+        this.load.audio('gametrack', './assets/ingame_track.wav');
     }
 
 
