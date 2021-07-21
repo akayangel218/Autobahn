@@ -20,12 +20,17 @@ class Play extends Phaser.Scene {
 
 
     create() {
-        // set up music
+        // set up in game music
         music = this.sound.add('gametrack');
         music.loop = true;
         music.play();
-        music.setVolume(.1);
+        music.setVolume(.9);
 
+        // set up car sounds
+        carSounds = this.sound.add('motorway');
+        carSounds.loop = true;
+        carSounds.play();
+        carSounds.setVolume(.9);
 
         // reset globalScore
         globalScore = 0;
@@ -44,9 +49,6 @@ class Play extends Phaser.Scene {
         // initialize score
         this.p1Score = 0;
 
-        // Add audio
-        this.sound.play('motorway');
-        this.sound.setVolume(0.5);
 
         //place tile sprite
         this.grass = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'grass').setOrigin(0, 0);
@@ -110,6 +112,7 @@ class Play extends Phaser.Scene {
         if (this.car.x < 110 || this.car.x > 480) {
             globalScore = this.p1Score / 10;
             music.stop();
+            carSounds.stop();
             this.scene.start("outScene");
             //this.gameOver = true;
         }
@@ -200,6 +203,7 @@ class Play extends Phaser.Scene {
                 //this.gameOver = true;
                 globalScore = this.p1Score / 10;
                 music.stop();
+                carSounds.stop();
                 this.scene.start("lostScene");
             }
 
@@ -208,6 +212,7 @@ class Play extends Phaser.Scene {
                 //console.log('collided with car', e);
                 globalScore = this.p1Score / 10;
                 music.stop();
+                carSounds.stop();
                 this.scene.start("crashScene");
                 //this.gameOver = true;
             });
@@ -217,6 +222,7 @@ class Play extends Phaser.Scene {
                 //console.log('collided with demon', e);
                 globalScore = this.p1Score / 10;
                 music.stop();
+                carSounds.stop();
                 this.scene.start("demonScene");
                 //this.gameOver = true;
             });
@@ -225,6 +231,7 @@ class Play extends Phaser.Scene {
             this.physics.add.collider(this.car, chiArr, (p, e) => {
                 globalScore = this.p1Score / 10;
                 music.stop();
+                carSounds.stop();
                 this.scene.start("winScene");
                 //this.gameOver = true;
             });
