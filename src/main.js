@@ -22,12 +22,12 @@ let config = {
             }
         }
     },
-    scene: [Menu, Instruct, Play, Win, Lost, Crash, Demon, Out]
+    scene: [Menu, Instruct, Play, Win, Lost, Crash, Demon, Out, Credits]
 }
 
 let game = new Phaser.Game(config);
 
-let keyLEFT, keyRIGHT, keyP, keyS, keyUP, keyDOWN, keyI;
+let keyLEFT, keyRIGHT, keyP, keyS, keyUP, keyDOWN, keyI, keyC;
 let globalScore = 0;
 let music, menuMusic, carSounds;
 let obsArr = [];

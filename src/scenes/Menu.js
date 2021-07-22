@@ -41,12 +41,14 @@ class Menu extends Phaser.Scene {
         this.add.text(game.config.width / 2, game.config.height / 1.8 - borderUISize - borderPadding, ' Autobahn ', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 1.7, 'Press I to view the game instructions', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 1.5, 'Press S to start', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 1.2, 'Press C to view credits', menuConfig).setOrigin(0.5);
         //menuConfig.backgroundColor = '#00FF00';
         //menuConfig.color = '#000';
 
         // define keys
         keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
     }
 
     update() {
@@ -54,7 +56,13 @@ class Menu extends Phaser.Scene {
             //this.sound.stopByKey('msong');
             this.scene.start("playScene");
         } else if (Phaser.Input.Keyboard.JustDown(keyI)) {
+            // stop menu music
+            //menuMusic.stop();
             this.scene.start("instructScene");
+        } else if (Phaser.Input.Keyboard.JustDown(keyC)) {
+            // stop menu music
+            //menuMusic.stop();
+            this.scene.start("creditsScene");
         }
     }
 }

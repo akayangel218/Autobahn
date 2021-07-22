@@ -1,4 +1,4 @@
-// Base for crash
+// Base for out of bounds
 class Out extends Phaser.Scene {
     constructor() {
         super("outScene");
