@@ -27,7 +27,7 @@ class Out extends Phaser.Scene {
             }
             // show menu text
         this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, 'OH NO! You went out of bounds!', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width / 2, game.config.height / 1.5 - borderUISize - borderPadding, 'You survived:' + globalScore + ' cars', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 1.5 - borderUISize - borderPadding, 'You survived: ' + globalScore + ' cars', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 1.2 - borderUISize - borderPadding, 'Press S to return to Menu', menuConfig).setOrigin(0.5);
         // define keys
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
