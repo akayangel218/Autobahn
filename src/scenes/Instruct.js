@@ -28,7 +28,7 @@ class Instruct extends Phaser.Scene {
 
         this.add.text(game.config.width / 2, game.config.height / 2, 'Use the arrow keys (<- and ->) to move through traffic,', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 1.8, ' pull over to find the child', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width / 2, game.config.height / 1.5, 'Be careful not to pick up any demons (they have a different bow)', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 1.5, 'Be careful not to pick up any demons', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 1.4, 'Also, do not crash into other cars or go off the road', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 1.2, 'Press S to start, Good Luck', menuConfig).setOrigin(0.5);
         //menuConfig.backgroundColor = '#00FF00';
